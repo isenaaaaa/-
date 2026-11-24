@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Исэна + Денис 💞</title>
+<meta name="theme-color" content="#ffe0ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Мы 💞">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💞</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#e8578a;--pd:#b8325f;--pl:#ffe3ee;--t:#4a2236;--m:#9a6b80}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font-family:Nunito,system-ui,sans-serif;color:var(--t);background:linear-gradient(160deg,#ffe0ec,#fff5f9 45%,#ece6ff);background-attachment:fixed;min-height:100vh}
+.wrap{max-width:460px;margin:0 auto;padding:20px 18px 48px}
+.card{background:#fff;border-radius:24px;padding:20px;box-shadow:0 10px 30px rgba(232,87,138,.15);margin-bottom:14px}
+h1{font-size:28px;margin:10px 0 6px;font-weight:800;text-align:center}
+h2{font-size:22px;margin:0 0 16px;font-weight:800;line-height:1.3}
+.m{color:var(--m);font-size:15px;line-height:1.5}
+.c{text-align:center}
+.chip{display:inline-block;background:var(--pl);color:var(--pd);border-radius:99px;padding:5px 12px;font-size:13px;font-weight:800}
+.btn{display:block;width:100%;border:0;border-radius:18px;padding:16px;font:800 17px Nunito,sans-serif;background:var(--p);color:#fff;cursor:pointer;box-shadow:0 6px 0 var(--pd);margin-top:14px;transition:transform .1s}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--pd)}
+.btn.sec{background:#fff;color:var(--pd);box-shadow:0 6px 0 #f3c1d4}
+.opt{display:block;width:100%;text-align:left;border:2px solid #f6d3e1;background:#fff;border-radius:16px;padding:14px;font:600 16px Nunito,sans-serif;color:var(--t);cursor:pointer;transition:.15s;margin-bottom:10px}
+.opt.sel{background:var(--pl);border-color:var(--p);color:var(--pd);transform:scale(1.02)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.g2 .opt{margin:0}
+.bar{height:10px;background:#fbe0ea;border-radius:99px;overflow:hidden}
+.bar>div{height:100%;background:var(--p);border-radius:99px;transition:width .4s}
+.err{color:#d0342c;font-size:14px;min-height:20px;margin-top:8px;font-weight:700}
+.hero{font-size:64px;text-align:center;animation:beat 1.4s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.15)}30%{transform:scale(1)}45%{transform:scale(1.1)}}
+.fade{animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.row{padding:12px 0;border-top:1px dashed #f3c9d9;font-size:15px}
+.row small{display:block;color:var(--m);font-size:13px;margin-top:2px}
+.met{background:var(--pl);border-radius:18px;padding:14px;font-size:13px;color:var(--m);font-weight:600}
+.met b{display:block;font-size:26px;color:var(--pd)}
+.big{font-size:19px;text-align:center;padding:26px 10px}
+input[type=range]{width:100%;accent-color:var(--p);height:30px}
+textarea{width:100%;border:2px solid #f6d3e1;border-radius:16px;padding:14px;font:600 16px Nunito,sans-serif;color:var(--t);resize:vertical;outline:none}
+textarea:focus{border-color:var(--p)}
+.fl{position:fixed;bottom:-40px;font-size:26px;pointer-events:none;animation:up 4.5s linear forwards;z-index:9}
+@keyframes up{to{transform:translateY(-115vh) rotate(40deg);opacity:0}}
+.msg{font-size:17px;line-height:1.6;white-space:pre-wrap;font-style:italic}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:var(--t);color:#fff;padding:10px 18px;border-radius:99px;font-weight:700;z-index:10}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+var N=['Исэна','Денис'];
+function P(q,o){return {s:'🍓 Вкусы',t:'pair',q:q,o:o}}
+function W(q){return {s:'👀 Кто из нас?',t:'who',q:q}}
+function F(a,b){return {s:'⚡ Молния · 5 секунд',t:'fast',q:a+' или '+b+'?',o:[a,b]}}
+function L(q){return {s:'💗 Шкала чувств',t:'sl',q:q}}
+var Q=[
+P('Любимый напиток',['☕ Кофе','🍵 Чай','🍫 Какао','🍋 Лимонад']),
+P('Любимый цвет',['🩷 Розовый','🩵 Голубой','🖤 Чёрный','💚 Зелёный','🤍 Белый','❤️ Красный']),
+P('Любимый жанр фильмов',['😂 Комедия','👻 Ужасы','💘 Мелодрама','🚀 Фантастика']),
+P('Какой сериал на вечер?',['🛋 Ситком','🕵️ Детектив','🍥 Аниме','📺 Реалити-шоу']),
+P('Любимая еда',['🍕 Пицца','🍣 Суши','🍔 Бургер','🥘 Мамина еда']),
+P('Что в наушниках?',['🎤 Поп','🎧 Рэп','🎸 Рок','🎶 Всё подряд']),
+P('Любимое время года',['❄️ Зима','🌸 Весна','☀️ Лето','🍂 Осень']),
+P('Идеальный отпуск',['🏖 Море','🏔 Горы','🌆 Большой город','🧸 Дома под пледом']),
+P('Какого питомца завести?',['🐱 Кошку','🐶 Собаку','🐹 Хомяка','🚫 Никого']),
+P('Главная сладость',['🍫 Шоколад','🍦 Мороженое','🎂 Торт','🙅 Не люблю сладкое']),
+P('Идеальное свидание',['🍷 Ресторан','🌙 Прогулка','🎬 Кино','🍿 Фильм дома']),
+P('Как лучше всего показать любовь?',['💬 Словами','🎁 Подарками','⏳ Временем вместе','🤗 Объятиями','🫶 Заботой','✨ Сюрпризами']),
+W('Кто умнее?'),W('Кто красивее?'),W('Кто вспыльчивее?'),W('Кто первым идёт мириться?'),
+W('Кто ревнивее?'),W('Кто дольше собирается?'),W('Кто лучше готовит?'),W('Кто романтичнее?'),
+W('Кто больше тратит?'),W('Кто первым засыпает?'),W('Кто смешнее?'),W('Кто первым влюбился?'),
+F('🦉 Сова','🐦 Жаворонок'),F('📞 Звонок','💬 Сообщение'),F('🍬 Сладкое','🥨 Солёное'),F('🪩 Тусовка','🏠 Дома'),
+F('📋 План','🎲 Спонтанность'),F('📖 Книга','🎬 Фильм'),F('🥔 Чипсы','🍿 Попкорн'),F('🤗 Обнимашки','💋 Поцелуи'),
+L('Насколько сильно ты скучаешь, когда вы не вместе?'),L('Насколько сильно ты ревнуешь?'),
+L('Насколько ты любишь обниматься?'),L('Насколько уверенно ты смотришь в ваше общее будущее?'),
+{s:'💌 Финал',t:'msg',q:'Секретное послание'}
+];
+var st,tm=null,LINK='',app=document.getElementById('app');
+function reset(){st={scr:'start',mode:'one',cur:0,i:0,a:[[],[]],tmp:{},lock:false}}
+function enc(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o))))}
+function dec(s){try{return JSON.parse(decodeURIComponent(escape(atob(s))))}catch(e){return null}}
+function base(){return location.href.split('#')[0]}
+function me(){return N[st.cur]}function ot(){return N[1-st.cur]}
+function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function R(){clearInterval(tm);var s=st.scr,v={start:vStart,invite:vInvite,ready:vReady,q:vQ,pass:vPass,send:vSend,res:vRes}[s];
+app.innerHTML='<div class="fade">'+v()+'</div>';window.scrollTo(0,0);
+if(s=='q'&&Q[st.i].t=='fast'&&!st.lock)startT();if(s=='res'){countUp();hearts()}}
+function go(s){st.scr=s;R()}
+function toast(t){var d=document.createElement('div');d.className='toast';d.textContent=t;document.body.appendChild(d);setTimeout(function(){d.remove()},1800)}
+function copyLink(){var done=function(){toast('Ссылка скопирована 💗')};if(navigator.clipboard)navigator.clipboard.writeText(LINK).then(done,function(){fb();done()});else{fb();done()}
+function fb(){var t=document.createElement('textarea');t.value=LINK;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(e){}t.remove()}}
+function shareLink(txt){if(navigator.share)navigator.share({title:'Исэна + Денис 💞',text:txt,url:LINK}).catch(function(){});else copyLink()}
+
+function vStart(){var r=[['🍓','Вкусы','отвечаешь за себя и угадываешь партнёра'],['👀','Кто из нас?','умнее, красивее, вспыльчивее…'],['⚡','Молния','5 секунд на выбор'],['💗','Шкала чувств','от 1 до 10'],['💌','Секретное послание','откроется только в конце']];
+return '<div class="hero">💞</div><h1>Исэна + Денис</h1><p class="m c">Насколько вы совместимы? Сейчас узнаем!</p><div class="card">'+r.map(function(x){return '<div style="display:flex;gap:12px;align-items:center;padding:7px 0"><span style="font-size:26px">'+x[0]+'</span><div><b>'+x[1]+'</b><div class="m" style="font-size:13px">'+x[2]+'</div></div></div>'}).join('')+'</div>'
++'<button class="btn" onclick="st.mode=\'one\';go(\'ready\')">📱 Играем на одном телефоне</button>'
++'<button class="btn sec" onclick="st.mode=\'link\';go(\'ready\')">💌 Играем на разных телефонах</button>'
++'<p class="m c" style="font-size:13px;margin-top:16px">Начинает Исэна. На разных телефонах она в конце отправит Денису ссылку, он ответит, и вы оба увидите результат.</p>'}
+function vInvite(){return '<div class="hero">💌</div><h1>Денис, привет!</h1><div class="card c"><p class="m" style="margin:0">Исэна уже ответила на все вопросы. Её ответы спрятаны до самого конца.<br><br>Теперь твоя очередь!</p></div><button class="btn" onclick="go(\'ready\')">Поехали 🚀</button>'}
+function vReady(){return '<div class="hero">'+(st.cur==0?'👩':'👨')+'</div><p class="m c" style="margin:10px 0 0">Сейчас ход</p><h1>'+me()+'</h1><div class="card c"><p class="m" style="margin:0">Отвечай честно!'+(st.mode=='one'?'<br>'+ot()+', не подглядывай 🙈':'')+'</p></div><button class="btn" onclick="go(\'q\')">Я '+(st.cur==0?'готова':'готов')+' ✨</button>'}
+function vPass(){return '<div class="hero">🔒</div><h1>Исэна, ты всё!</h1><div class="card c"><p class="m" style="margin:0">Твои ответы спрятаны. Теперь передай телефон Денису 📱➡️👨</p></div><button class="btn" onclick="st.cur=1;st.i=0;go(\'ready\')">Я Денис, поехали</button>'}
+function vSend(){LINK=base()+'#i='+enc(st.a[0]);return '<div class="hero">💌</div><h1>Исэна, ты всё!</h1><div class="card c"><p class="m" style="margin:0">Отправь эту ссылку Денису. Когда он ответит, вы оба увидите результат.<br><br>Сама её не открывай, это ход Дениса 😉</p></div><button class="btn" onclick="shareLink(\'Денис, твоя очередь пройти наш тест 💞\')">📤 Отправить Денису</button><button class="btn sec" onclick="copyLink()">📋 Скопировать ссылку</button>'}
+
+function opts(k,o){return '<div class="g2">'+o.map(function(x,j){return '<button class="opt'+(st.tmp[k]===j?' sel':'')+'" onclick="pk(\''+k+'\','+j+')">'+x+'</button>'}).join('')+'</div>'}
+function vQ(){var q=Q[st.i],n=Q.length,h='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span class="chip">'+q.s+'</span><span class="m" style="font-size:13px">'+me()+' · '+(st.i+1)+'/'+n+'</span></div><div class="bar" style="margin-bottom:16px"><div style="width:'+Math.round(st.i/n*100)+'%"></div></div><div class="card"><h2>'+q.q+'</h2>';
+if(q.t=='pair')h+='<p class="m" style="margin:0 0 8px"><b>Твой ответ</b></p>'+opts('s',q.o)+'<p class="m" style="margin:18px 0 8px"><b>А что ответит '+ot()+'?</b> Угадай 🤔</p>'+opts('g',q.o)+'<div class="err" id="err"></div><button class="btn" onclick="nx()">Дальше</button>';
+if(q.t=='who'){var o=['👩 '+N[0],'👨 '+N[1],'🤝 Одинаково'];h+=o.map(function(x,j){return '<button class="opt'+(st.tmp.v===j?' sel':'')+'" onclick="one('+j+')">'+x+'</button>'}).join('')}
+if(q.t=='fast')h+='<div class="bar" style="margin-bottom:6px"><div id="tb" style="width:100%;transition:none"></div></div><p class="m" id="ts" style="margin:0 0 12px">⏱ 5 сек</p><div class="g2">'+q.o.map(function(x,j){return '<button class="opt big'+(st.tmp.v===j?' sel':'')+'" onclick="one('+j+')">'+x+'</button>'}).join('')+'</div>';
+if(q.t=='sl'){var v=st.tmp.v||5;h+='<div class="c" style="font-size:56px;font-weight:800;color:var(--p)" id="sv">'+v+'</div><input type="range" min="1" max="10" step="1" value="'+v+'" id="rg" oninput="st.tmp.v=+this.value;document.getElementById(\'sv\').textContent=this.value"><div class="m" style="display:flex;justify-content:space-between;font-size:13px"><span>1 · совсем нет</span><span>10 · очень</span></div><button class="btn" onclick="nx()">Дальше</button>'}
+if(q.t=='msg')h+='<p class="m">Напиши '+(st.cur==0?'Денису':'Исэне')+' что-то тёплое. Это прочитают только в самом конце 🤫</p><textarea id="msg" rows="5" placeholder="Ты мой самый любимый человек, потому что…"></textarea><div class="err" id="err"></div><button class="btn" onclick="nx()">Завершить '+(st.cur==0?'свой ход':'игру')+' 💖</button>';
+return h+'</div>'}
+function pk(k,j){st.tmp[k]=j;R()}
+function one(j){if(st.lock)return;st.lock=true;clearInterval(tm);st.tmp.v=j;R();setTimeout(function(){save(j)},300)}
+function startT(){var t0=Date.now();tm=setInterval(function(){var l=5000-(Date.now()-t0),b=document.getElementById('tb'),s=document.getElementById('ts');if(!b)return clearInterval(tm);b.style.width=Math.max(0,l/50)+'%';s.textContent='⏱ '+Math.max(0,Math.ceil(l/1000))+' сек';if(l<=0){clearInterval(tm);st.lock=true;save(null)}},50)}
+function save(v){st.a[st.cur][st.i]=v;st.tmp={};st.lock=false;st.i++;
+if(st.i>=Q.length){if(st.cur==0)st.scr=st.mode=='one'?'pass':'send';else st.scr='res'}R()}
+function nx(){var q=Q[st.i],e=document.getElementById('err');
+if(q.t=='pair'){if(st.tmp.s==null||st.tmp.g==null){e.textContent='Выбери оба ответа 👆';return}save([st.tmp.s,st.tmp.g])}
+else if(q.t=='sl')save(+document.getElementById('rg').value);
+else if(q.t=='msg'){var m=document.getElementById('msg').value.trim();if(!m){e.textContent='Напиши хотя бы пару слов 💌';return}save(m)}}
+
+function pc(a,b){return b?Math.round(a/b*100):0}
+function row(t,x,y,m){return '<div class="row">'+(m?'💖 ':'')+t+'<small>Исэна: '+x+' · Денис: '+y+'</small></div>'}
+function vRes(){var A=st.a[0],B=st.a[1],tp=0,k0=0,k1=0,np=0,wa=0,nw=0,fa=0,nf=0,sl=0,ns=0,rP='',rW='',rF='',rS='',nm=['Исэна','Денис','поровну'],mA='',mB='';
+Q.forEach(function(q,i){var a=A[i],b=B[i];
+if(q.t=='pair'){np++;var m=a[0]==b[0];if(m)tp++;if(a[1]==b[0])k0++;if(b[1]==a[0])k1++;rP+=row(q.q,q.o[a[0]],q.o[b[0]],m)}
+if(q.t=='who'){nw++;if(a==b){wa++;rW+='<div class="row">💖 '+q.q+'<small style="color:var(--pd)"><b>Единогласно: '+nm[a]+'</b></small></div>'}else rW+='<div class="row">⚔️ '+q.q+' <span class="chip">спорно</span><small>Исэна считает: '+nm[a]+' · Денис: '+nm[b]+'</small></div>'}
+if(q.t=='fast'){nf++;var m2=a!=null&&a==b;if(m2)fa++;rF+=row(q.q,a==null?'не успела':q.o[a],b==null?'не успел':q.o[b],m2)}
+if(q.t=='sl'){ns++;sl+=1-Math.abs(a-b)/9;rS+=row(q.q,a+'/10',b+'/10',Math.abs(a-b)<=1)}
+if(q.t=='msg'){mA=a;mB=b}});
+var T=pc(tp,np),K0=pc(k0,np),K1=pc(k1,np),Wp=pc(wa,nw),Fp=pc(fa,nf),Sp=Math.round(sl/ns*100),tot=Math.round(T*.2+(K0+K1)/2*.3+Wp*.2+Fp*.15+Sp*.15);
+var v=tot>=80?['👑 Созданы друг для друга','Вы как две половинки одного сердечка']:tot>=65?['🥰 Отличная пара','Много общего и ещё больше любви']:tot>=50?['🧲 Противоположности притягиваются','Вам точно не скучно вместе']:['🌱 Впереди столько открытий','Самое интересное: узнавать друг друга дальше'];
+var kw=K0>K1?'Исэна знает Дениса лучше, чем он её':K1>K0?'Денис знает Исэну лучше, чем она его':'Вы знаете друг друга одинаково хорошо';
+var mets=[['🍓 Общие вкусы',T],['👩 Исэна знает Дениса',K0],['👨 Денис знает Исэну',K1],['👀 Согласие «Кто из нас?»',Wp],['⚡ Молния',Fp],['💗 Чувства на одной волне',Sp]];
+LINK=base()+'#r='+enc(st.a);
+function sec(t,b){return '<div class="card"><h2 style="font-size:19px;margin-bottom:6px">'+t+'</h2>'+b+'</div>'}
+return '<div class="hero">💞</div><p class="m c" style="margin:6px 0 0">Совместимость Исэны и Дениса</p><div id="tot" data-v="'+tot+'" class="c" style="font-size:72px;font-weight:800;color:var(--p);line-height:1.1">0%</div><div class="c"><span class="chip" style="font-size:15px">'+v[0]+'</span><p class="m">'+v[1]+'</p></div>'
++'<div class="g2" style="margin-bottom:14px">'+mets.map(function(m){return '<div class="met">'+m[0]+'<b>'+m[1]+'%</b></div>'}).join('')+'</div>'
++'<div class="card c"><div style="font-size:34px">🏆</div><b>'+kw+'</b></div>'
++sec('💌 Послание от Исэны','<p class="msg">'+esc(mA)+'</p>')+sec('💌 Послание от Дениса','<p class="msg">'+esc(mB)+'</p>')
++sec('👀 Кто из нас?',rW)+sec('🍓 Ваши вкусы',rP)+sec('⚡ Молния',rF)+sec('💗 Шкала чувств',rS)
++'<button class="btn" onclick="shareLink(\'Наш результат совместимости 💞\')">📤 Поделиться результатом</button><button class="btn sec" onclick="history.replaceState(null,\'\',base());reset();R()">🔄 Сыграть ещё раз</button>'}
+function countUp(){var e=document.getElementById('tot'),t=+e.dataset.v,t0=Date.now();var iv=setInterval(function(){var p=Math.min(1,(Date.now()-t0)/1600);e.textContent=Math.round(t*(1-Math.pow(1-p,3)))+'%';if(p>=1)clearInterval(iv)},30)}
+function hearts(){var em=['💖','💕','💗','💞','✨','🌸'];for(var i=0;i<28;i++)(function(i){setTimeout(function(){var d=document.createElement('div');d.className='fl';d.textContent=em[i%em.length];d.style.left=Math.random()*95+'vw';document.body.appendChild(d);setTimeout(function(){d.remove()},4600)},i*120)})(i)}
+
+reset();
+var h=location.hash.slice(1),d;
+if(h.indexOf('r=')==0){d=dec(h.slice(2));if(d&&d.length==2){st.a=d;st.mode='link';st.scr='res'}}
+else if(h.indexOf('i=')==0){d=dec(h.slice(2));if(d){st.a[0]=d;st.mode='link';st.cur=1;st.scr='invite'}}
+R();
+</script>
+</body>
+</html>
